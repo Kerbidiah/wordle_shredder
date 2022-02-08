@@ -1,0 +1,10 @@
+i have renamed the files to .nooooo so vscode doesn't try to autosuggest from them
+
+wordle archive:
+	https://www.devangthakkar.com/wordle_archive
+
+sgb-words.txt:
+	https://www-cs-faculty.stanford.edu/~knuth/sgb-words.txt
+
+big_list compiled from:
+	https://www.bestwordlist.com/5letterwords.htm
