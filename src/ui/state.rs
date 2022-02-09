@@ -7,6 +7,7 @@ use iced::{
 	scrollable,
 	Scrollable,
 	Column,
+	Container,
 	Row,
 	Text,
 	text_input,
@@ -21,9 +22,11 @@ use iced::widget::{
 use crate::list::*;
 use super::LetterState;
 use super::LMessage;
+use super::design;
 
 #[derive(Debug)]
 pub struct State {
+	// list stuff
 	list: List,
 	scroll: scrollable::State,
 
@@ -147,90 +150,105 @@ impl Sandbox for State {
 
 		let letter_list: Element<_> = 
 		Row::new()
-			.push(
+			.push( // left side buffer
 				Space::new(Length::Fill, Length::Shrink)
 			)
-			.push(
+			.push( // letter index 0
 				Column::new()
 					.push(Text::new(self.ls0.get_char()))
 					.push(
 						Button::new(&mut self.ls0.gray_button, Text::new("gray"))
 						.on_press(Message::LS0(LMessage::GrayPressed))
+						.style(design::ButtonGray)
 					)
 					.push(
 						Button::new(&mut self.ls0.yellow_button, Text::new("yellow"))
 						.on_press(Message::LS0(LMessage::YellowPressed))
+						.style(design::ButtonYellow)
 					)
 					.push(
 						Button::new(&mut self.ls0.green_button, Text::new("green"))
 						.on_press(Message::LS0(LMessage::GreenPressed))
+						.style(design::ButtonGreen)
 					)
 			)
-			.push(
+			.push( // letter index 1
 				Column::new()
 					.push(Text::new(self.ls1.get_char()))
 					.push(
 						Button::new(&mut self.ls1.gray_button, Text::new("gray"))
 						.on_press(Message::LS1(LMessage::GrayPressed))
+						.style(design::ButtonGray)
 					)
 					.push(
 						Button::new(&mut self.ls1.yellow_button, Text::new("yellow"))
 						.on_press(Message::LS1(LMessage::YellowPressed))
+						.style(design::ButtonYellow)
 					)
 					.push(
 						Button::new(&mut self.ls1.green_button, Text::new("green"))
 						.on_press(Message::LS1(LMessage::GreenPressed))
+						.style(design::ButtonGreen)
 					)
 			)
-			.push(
+			.push( // letter index 2
 				Column::new()
 					.push(Text::new(self.ls2.get_char()))
 					.push(
 						Button::new(&mut self.ls2.gray_button, Text::new("gray"))
 						.on_press(Message::LS2(LMessage::GrayPressed))
+						.style(design::ButtonGray)
 					)
 					.push(
 						Button::new(&mut self.ls2.yellow_button, Text::new("yellow"))
 						.on_press(Message::LS2(LMessage::YellowPressed))
+						.style(design::ButtonYellow)
 					)
 					.push(
 						Button::new(&mut self.ls2.green_button, Text::new("green"))
 						.on_press(Message::LS2(LMessage::GreenPressed))
+						.style(design::ButtonGreen)
 					)
 			)
-			.push(
+			.push( // letter index 3
 				Column::new()
 					.push(Text::new(self.ls3.get_char()))
 					.push(
 						Button::new(&mut self.ls3.gray_button, Text::new("gray"))
 						.on_press(Message::LS3(LMessage::GrayPressed))
+						.style(design::ButtonGray)
 					)
 					.push(
 						Button::new(&mut self.ls3.yellow_button, Text::new("yellow"))
 						.on_press(Message::LS3(LMessage::YellowPressed))
+						.style(design::ButtonYellow)
 					)
 					.push(
 						Button::new(&mut self.ls3.green_button, Text::new("green"))
 						.on_press(Message::LS3(LMessage::GreenPressed))
+						.style(design::ButtonGreen)
 					)
 			)
-			.push(
+			.push( // letter index 4
 				Column::new()
 					.push(Text::new(self.ls4.get_char()))
 					.push(
 						Button::new(&mut self.ls4.gray_button, Text::new("gray"))
 						.on_press(Message::LS4(LMessage::GrayPressed))
+						.style(design::ButtonGray)
 					)
 					.push(
 						Button::new(&mut self.ls4.yellow_button, Text::new("yellow"))
 						.on_press(Message::LS4(LMessage::YellowPressed))
+						.style(design::ButtonYellow)
 					)
 					.push(
 						Button::new(&mut self.ls4.green_button, Text::new("green"))
 						.on_press(Message::LS4(LMessage::GreenPressed))
+						.style(design::ButtonGreen)
 					)
 			)
-			.push(
+			.push( // right side buffer
 				Space::new(Length::Fill, Length::Shrink)
 			)
 		.into();

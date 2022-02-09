@@ -3,7 +3,7 @@ mod archive;
 mod ui;
 
 fn main() {
-	let mut _words = list::List::new();
+	// let mut _words = list::List::new();
 
 	ui::State::show();
 }
