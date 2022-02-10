@@ -2,7 +2,7 @@
 
 use iced::{button, container, Color};
 
-const BORDER_RADIUS: f32 = 4.0;
+const BORDER_RADIUS: f32 = 30.0;
 const BORDER_WIDTH: f32 = 2.0;
 const TEXT_COLOR: Color = Color::WHITE;
 const BUTTON_PRESSED_BORDER_COLOR: Color = Color::BLACK; // todo: figure out why border isn't working
