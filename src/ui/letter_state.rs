@@ -20,7 +20,7 @@ impl LetterState {
 	pub fn new(i: usize) -> Self {
 		LetterState {
 			index: i,
-			letter: Letter::Empty,
+			letter: Letter::Gray(' '),
 			gray_button: button::State::new(),
 			yellow_button: button::State::new(),
 			green_button: button::State::new(),
@@ -28,7 +28,7 @@ impl LetterState {
 	}
 
 	pub fn set_letter(&mut self, c: char) {
-		self.letter = Letter::Blank(c);
+		self.letter = Letter::Gray(c);
 	}
 
 	pub fn set_color_and_index(&mut self, color: LMessage, i: usize) {

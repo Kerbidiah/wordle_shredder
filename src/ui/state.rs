@@ -99,11 +99,11 @@ impl Sandbox for State {
 				self.list.execute(self.ls4.letter);
 
 				self.input_value.clear();
-				self.ls0.letter = Letter::Empty;
-				self.ls1.letter = Letter::Empty;
-				self.ls2.letter = Letter::Empty;
-				self.ls3.letter = Letter::Empty;
-				self.ls4.letter = Letter::Empty;
+				self.ls0.letter = Letter::Gray(' ');
+				self.ls1.letter = Letter::Gray(' ');
+				self.ls2.letter = Letter::Gray(' ');
+				self.ls3.letter = Letter::Gray(' ');
+				self.ls4.letter = Letter::Gray(' ');
 			},
 			Message::Reset => {
 				self.list = List::new();
@@ -155,7 +155,10 @@ impl Sandbox for State {
 			)
 			.push( // letter index 0
 				Column::new()
-					.push(Text::new(self.ls0.get_char()))
+					.push(
+						Container::new(Text::new(self.ls0.get_char()))
+						.style(design::container_color::dynamic(&self.ls0))
+					)
 					.push(
 						Button::new(&mut self.ls0.gray_button, Text::new("gray"))
 						.on_press(Message::LS0(LMessage::GrayPressed))
@@ -174,7 +177,10 @@ impl Sandbox for State {
 			)
 			.push( // letter index 1
 				Column::new()
-					.push(Text::new(self.ls1.get_char()))
+					.push(
+						Container::new(Text::new(self.ls1.get_char()))
+						.style(design::container_color::dynamic(&self.ls1))
+					)
 					.push(
 						Button::new(&mut self.ls1.gray_button, Text::new("gray"))
 						.on_press(Message::LS1(LMessage::GrayPressed))
@@ -193,7 +199,10 @@ impl Sandbox for State {
 			)
 			.push( // letter index 2
 				Column::new()
-					.push(Text::new(self.ls2.get_char()))
+					.push(
+						Container::new(Text::new(self.ls2.get_char()))
+						.style(design::container_color::dynamic(&self.ls2))
+					)
 					.push(
 						Button::new(&mut self.ls2.gray_button, Text::new("gray"))
 						.on_press(Message::LS2(LMessage::GrayPressed))
@@ -212,7 +221,10 @@ impl Sandbox for State {
 			)
 			.push( // letter index 3
 				Column::new()
-					.push(Text::new(self.ls3.get_char()))
+					.push(
+						Container::new(Text::new(self.ls3.get_char()))
+						.style(design::container_color::dynamic(&self.ls3))
+					)
 					.push(
 						Button::new(&mut self.ls3.gray_button, Text::new("gray"))
 						.on_press(Message::LS3(LMessage::GrayPressed))
@@ -231,7 +243,10 @@ impl Sandbox for State {
 			)
 			.push( // letter index 4
 				Column::new()
-					.push(Text::new(self.ls4.get_char()))
+					.push(
+						Container::new(Text::new(self.ls4.get_char()))
+						.style(design::container_color::dynamic(&self.ls4))
+					)
 					.push(
 						Button::new(&mut self.ls4.gray_button, Text::new("gray"))
 						.on_press(Message::LS4(LMessage::GrayPressed))

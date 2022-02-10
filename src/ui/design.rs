@@ -30,6 +30,22 @@ const BLANK: Color = Color::from_rgb(
 	0xED as f32 / 255.0
 );
 
+pub mod container_color {
+	use iced::container::StyleSheet;
+    use super::*;
+    use crate::ui::LetterState;
+	use crate::list::Letter;
+
+	pub fn dynamic(l_state: &LetterState) -> Box<dyn container::StyleSheet> {
+		match l_state.letter {
+			Letter::Empty => Box::new(BlankContainer),
+			Letter::Blank(_) => Box::new(BlankContainer),
+			Letter::Gray(_) => Box::new(GrayContainer),
+			Letter::Yellow(_, _) => Box::new(YellowContainer),
+			Letter::Green(_, _) => Box::new(GreenContainer),
+		}
+	}
+}
 pub struct BlankContainer;
 
 impl container::StyleSheet for BlankContainer {
