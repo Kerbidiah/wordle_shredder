@@ -23,6 +23,7 @@ use crate::list::*;
 use super::LetterState;
 use super::LMessage;
 use super::design;
+use super::n;
 
 #[derive(Debug)]
 pub struct State {
@@ -130,6 +131,7 @@ impl Sandbox for State {
 	}
 
 	fn view(&mut self) -> iced::Element<'_, Self::Message> {
+
 		// build the word list thingy
 		let word_list: Element<_> = self.list.data.iter()
 			.fold(Column::new().spacing(5), |column, word| {
@@ -150,11 +152,12 @@ impl Sandbox for State {
 
 		let letter_list: Element<_> = 
 		Row::new()
-			.push( // left side buffer
-				Space::new(Length::Fill, Length::Shrink)
-			)
+			.spacing(n::BUTTON_PADDING)
 			.push( // letter index 0
 				Column::new()
+					.spacing(n::BUTTON_SPACING)
+					.width(Length::Fill)
+					.align_items(Align::Center)
 					.push(
 						Container::new(Text::new(self.ls0.get_char()))
 						.style(design::container_color::dynamic(&self.ls0))
@@ -177,6 +180,9 @@ impl Sandbox for State {
 			)
 			.push( // letter index 1
 				Column::new()
+					.spacing(n::BUTTON_SPACING)
+					.width(Length::Fill)
+					.align_items(Align::Center)
 					.push(
 						Container::new(Text::new(self.ls1.get_char()))
 						.style(design::container_color::dynamic(&self.ls1))
@@ -199,6 +205,9 @@ impl Sandbox for State {
 			)
 			.push( // letter index 2
 				Column::new()
+					.spacing(n::BUTTON_SPACING)
+					.width(Length::Fill)
+					.align_items(Align::Center)
 					.push(
 						Container::new(Text::new(self.ls2.get_char()))
 						.style(design::container_color::dynamic(&self.ls2))
@@ -221,6 +230,9 @@ impl Sandbox for State {
 			)
 			.push( // letter index 3
 				Column::new()
+					.spacing(n::BUTTON_SPACING)
+					.width(Length::Fill)
+					.align_items(Align::Center)
 					.push(
 						Container::new(Text::new(self.ls3.get_char()))
 						.style(design::container_color::dynamic(&self.ls3))
@@ -243,6 +255,9 @@ impl Sandbox for State {
 			)
 			.push( // letter index 4
 				Column::new()
+					.spacing(n::BUTTON_SPACING)
+					.width(Length::Fill)
+					.align_items(Align::Center)
 					.push(
 						Container::new(Text::new(self.ls4.get_char()))
 						.style(design::container_color::dynamic(&self.ls4))
@@ -262,9 +277,6 @@ impl Sandbox for State {
 						.on_press(Message::LS4(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
 					)
-			)
-			.push( // right side buffer
-				Space::new(Length::Fill, Length::Shrink)
 			)
 		.into();
 		
@@ -292,7 +304,7 @@ impl Sandbox for State {
 					)
 					.push(letter_list)
 					.push(Space::new(Length::Shrink ,Length::Fill))
-					.push(
+					.push( // TODO: move eliminate button
 						Button::new(&mut self.eliminate, Text::new("eliminate"))
 						.on_press(Message::Eliminate)
 					)

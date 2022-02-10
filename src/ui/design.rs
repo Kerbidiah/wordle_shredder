@@ -3,8 +3,9 @@
 use iced::{button, container, Color};
 
 const BORDER_RADIUS: f32 = 4.0;
-const BORDER_WIDTH: f32 = 1.0;
+const BORDER_WIDTH: f32 = 2.0;
 const TEXT_COLOR: Color = Color::WHITE;
+const BUTTON_PRESSED_BORDER_COLOR: Color = Color::BLACK; // todo: figure out why border isn't working
 
 const GREEN: Color = Color::from_rgb(
 	0x74 as f32 / 255.0,
@@ -111,6 +112,7 @@ impl button::StyleSheet for ButtonGreen {
 
 	fn hovered(&self) -> button::Style {
 		button::Style {
+			border_color: BUTTON_PRESSED_BORDER_COLOR,
 			..self.active()
 		}
 	}
@@ -136,6 +138,7 @@ impl button::StyleSheet for ButtonYellow {
 
 	fn hovered(&self) -> button::Style {
 		button::Style {
+			border_color: BUTTON_PRESSED_BORDER_COLOR,
 			..self.active()
 		}
 	}
@@ -161,6 +164,7 @@ impl button::StyleSheet for ButtonGray {
 
 	fn hovered(&self) -> button::Style {
 		button::Style {
+			border_color: BUTTON_PRESSED_BORDER_COLOR,
 			..self.active()
 		}
 	}
