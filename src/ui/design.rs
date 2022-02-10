@@ -31,7 +31,6 @@ const BLANK: Color = Color::from_rgb(
 );
 
 pub mod container_color {
-	use iced::container::StyleSheet;
     use super::*;
     use crate::ui::LetterState;
 	use crate::list::Letter;
@@ -104,7 +103,7 @@ impl button::StyleSheet for ButtonGreen {
 	fn active(&self) -> button::Style {
 		button::Style {
 			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR.into(),
+			text_color: TEXT_COLOR,
 			background: GREEN.into(),
 			..button::Style::default()
 		}
@@ -129,7 +128,7 @@ impl button::StyleSheet for ButtonYellow {
 	fn active(&self) -> button::Style {
 		button::Style {
 			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR.into(),
+			text_color: TEXT_COLOR,
 			background: YELLOW.into(),
 			..button::Style::default()
 		}
@@ -154,7 +153,7 @@ impl button::StyleSheet for ButtonGray {
 	fn active(&self) -> button::Style {
 		button::Style {
 			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR.into(),
+			text_color: TEXT_COLOR,
 			background: GRAY.into(),
 			..button::Style::default()
 		}

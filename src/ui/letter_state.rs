@@ -55,11 +55,12 @@ impl LetterState {
 		}
 	}
 
-	pub fn get_string(&self) -> String {
-		String::from(self.get_char())
-	}
+	// pub fn get_string(&self) -> String {
+	// 	String::from(self.get_char())
+	// }
 }
 
+#[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, Copy)]
 pub enum LMessage {
     GrayPressed,
