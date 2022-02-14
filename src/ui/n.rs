@@ -3,7 +3,8 @@
 pub mod button {
 	// use super::*;
 
-	pub const SIZE: u16 = 30;
+	pub const SIZE: u16 = 50;
+	pub const SIZE2: u16 = 30;
 	pub const SPACING: u16 = 5;
 	pub const PADDING: u16 = SPACING * 2;
 }

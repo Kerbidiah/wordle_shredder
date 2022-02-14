@@ -55,6 +55,16 @@ impl LetterState {
 		}
 	}
 
+	pub fn get_char_upper(&self) -> char {
+		let x = self.letter.get_char();
+
+		if let Some(c) = x {
+			c.to_ascii_uppercase()
+		} else {
+			' '
+		}
+	}
+
 	// pub fn get_string(&self) -> String {
 	// 	String::from(self.get_char())
 	// }
