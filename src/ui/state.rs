@@ -74,7 +74,7 @@ impl Sandbox for State {
 		State::default()
 	}
 	
-	fn title(&self) -> String {
+	fn title(&self) -> String { 
 		String::from("Wordle Shredder")
 	}
 
