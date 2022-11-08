@@ -5,23 +5,28 @@ use super::Letter;
 #[derive(Debug, Clone)]
 pub struct List {
 	pub data: Vec<String>,
-	og_len: usize
+	og_len: usize,
 }
 
 impl List {
 	pub fn new() -> Self {
 		let cnts = include_str!("../../big_list.nooooo").to_ascii_lowercase();
 
-		let data: Vec<String> = cnts.split(&['\n', ' '][..]).par_bridge().map(|x| x.to_string()).collect();
-		let og_len = data.len();
-		
-		// should these be enabled for release builds too???
-		debug_assert!(&data.par_iter().all(|word| (word.len() == 5) && (word.is_ascii())));
+		let data: Vec<String> = cnts
+			.split(&['\n', '\r', ' '][..])
+			.par_bridge()
+			.filter(|x| !x.is_empty())
+			.map(|x| x.to_string())
+			.collect();
 
-		Self {
-			data,
-			og_len,
-		}
+		let og_len = data.len();
+
+		// should these be enabled for release builds too???
+		debug_assert!(&data
+			.par_iter()
+			.all(|word| (word.len() == 5) && (word.is_ascii())));
+
+		Self { data, og_len }
 	}
 
 	pub fn len(&self) -> usize {
@@ -51,7 +56,7 @@ impl List {
 			self.data.retain(|word| !word.contains(c));
 		});
 	}
-	
+
 	/// keep all words that have the given char, but not at the specified index
 	pub fn yellow(&mut self, c: char, i: usize) {
 		if c != ' ' {
@@ -72,16 +77,16 @@ impl List {
 		match w {
 			Letter::Gray(c) => {
 				self.gray(c);
-			},
+			}
 			Letter::Yellow(c, i) => {
 				self.yellow(c, i);
-			},
+			}
 			Letter::Green(c, i) => {
 				self.green(c, i);
-			},
+			}
 			Letter::Blank(c) => {
 				panic!("missing color code for {}\n{:?}", c, w);
-			},
+			}
 			Letter::Empty => {
 				panic!("letter missing!");
 			}

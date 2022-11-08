@@ -1,5 +1,5 @@
-mod list;
 mod archive;
+mod list;
 mod ui;
 
 fn main() {

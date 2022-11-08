@@ -1,10 +1,8 @@
 use iced::{
-	Align,
 	Button, button,
 	Column, Row,
 	Container,
 	Element,
-	HorizontalAlignment, VerticalAlignment,
 	Length,
 	Sandbox,
 	Scrollable, scrollable,
@@ -12,7 +10,9 @@ use iced::{
 	Text,
 	TextInput, text_input,
 };
+
 use iced::widget::Space;
+use iced::alignment::{self, Alignment};
 
 use crate::list::*;
 use super::LetterState;
@@ -30,10 +30,10 @@ pub struct State {
 
 	// text input box thing
 	input: text_input::State, // the state of input box itself
-	input_value: String, // the string inputed
+	input_value: String, // the string inputted
 
 	// button states
-	submit: button::State, // used for both button and text feild
+	submit: button::State, // used for both button and text field
 	reset: button::State,
 	eliminate: button::State,
 
@@ -60,7 +60,7 @@ pub enum Message {
 }
 
 impl State {
-	// this is the function called in main.rs that actaully makes the app run
+	// this is the function called in main.rs that actually makes the app run
 	pub fn show() {
 		Self::run(Settings::default()).unwrap();
 	}
@@ -156,7 +156,7 @@ impl Sandbox for State {
 				Column::new()
 					.spacing(n::button::SPACING)
 					.width(Length::Fill)
-					.align_items(Align::Center)
+					.align_items(Alignment::Center)
 					.push(
 						Container::new(
 							Text::new(self.ls0.get_char_upper())
@@ -164,14 +164,16 @@ impl Sandbox for State {
 						)
 						.style(design::container_color::dynamic(&self.ls0))
 						.height(Length::Fill).width(Length::Fill)
-						.align_x(Align::Center).align_y(Align::Center)
+                        .align_x(alignment::Horizontal::Center)
+                        .align_y(alignment::Vertical::Center)
 					)
 					.push(
 						Button::new(
 							&mut self.ls0.gray_button,
 							Text::new("gray")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS0(LMessage::GrayPressed))
 						.style(design::ButtonGray)
@@ -181,8 +183,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls0.yellow_button,
 							Text::new("yellow")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS0(LMessage::YellowPressed))
 						.style(design::ButtonYellow)
@@ -192,8 +195,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls0.green_button,
 							Text::new("green")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+                            .horizontal_alignment(alignment::Horizontal::Center)
+                            .vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS0(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
@@ -204,7 +208,7 @@ impl Sandbox for State {
 				Column::new()
 					.spacing(n::button::SPACING)
 					.width(Length::Fill)
-					.align_items(Align::Center)
+					.align_items(Alignment::Center)
 					.push(
 						Container::new(
 							Text::new(self.ls1.get_char_upper())
@@ -212,15 +216,17 @@ impl Sandbox for State {
 						)
 						.style(design::container_color::dynamic(&self.ls1))
 						.height(Length::Fill).width(Length::Fill)
-						.align_x(Align::Center).align_y(Align::Center)
+						.align_x(alignment::Horizontal::Center)
+                        .align_y(alignment::Vertical::Center)
 					)
 					//.push(Space::new(Length::Fill, Length::Fill)) // IDK how big to make the space
 					.push(
 						Button::new(
 							&mut self.ls1.gray_button,
 							Text::new("gray")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+                            .vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS1(LMessage::GrayPressed))
 						.style(design::ButtonGray)
@@ -230,8 +236,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls1.yellow_button,
 							Text::new("yellow")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+                            .vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS1(LMessage::YellowPressed))
 						.style(design::ButtonYellow)
@@ -241,8 +248,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls1.green_button,
 							Text::new("green")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+                            .vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS1(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
@@ -253,7 +261,7 @@ impl Sandbox for State {
 				Column::new()
 					.spacing(n::button::SPACING)
 					.width(Length::Fill)
-					.align_items(Align::Center)
+					.align_items(Alignment::Center)
 					.push(
 						Container::new(
 							Text::new(self.ls2.get_char_upper())
@@ -261,14 +269,16 @@ impl Sandbox for State {
 						)
 						.style(design::container_color::dynamic(&self.ls2))
 						.height(Length::Fill).width(Length::Fill)
-						.align_x(Align::Center).align_y(Align::Center)
+                        .align_x(alignment::Horizontal::Center)
+                        .align_y(alignment::Vertical::Center)
 					)
 					.push(
 						Button::new(
 							&mut self.ls2.gray_button,
 							Text::new("gray")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS2(LMessage::GrayPressed))
 						.style(design::ButtonGray)
@@ -278,8 +288,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls2.yellow_button,
 							Text::new("yellow")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS2(LMessage::YellowPressed))
 						.style(design::ButtonYellow)
@@ -289,8 +300,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls2.green_button,
 							Text::new("green")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS2(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
@@ -301,7 +313,7 @@ impl Sandbox for State {
 				Column::new()
 					.spacing(n::button::SPACING)
 					.width(Length::Fill)
-					.align_items(Align::Center)
+					.align_items(Alignment::Center)
 					.push(
 						Container::new(
 							Text::new(self.ls3.get_char_upper())
@@ -309,14 +321,16 @@ impl Sandbox for State {
 						)
 						.style(design::container_color::dynamic(&self.ls3))
 						.height(Length::Fill).width(Length::Fill)
-						.align_x(Align::Center).align_y(Align::Center)
+						.align_x(alignment::Horizontal::Center)
+                        .align_y(alignment::Vertical::Center)
 					)
 					.push(
 						Button::new(
 							&mut self.ls3.gray_button,
 							Text::new("gray")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS3(LMessage::GrayPressed))
 						.style(design::ButtonGray)
@@ -326,8 +340,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls3.yellow_button,
 							Text::new("yellow")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS3(LMessage::YellowPressed))
 						.style(design::ButtonYellow)
@@ -337,8 +352,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls3.green_button,
 							Text::new("green")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS3(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
@@ -349,7 +365,7 @@ impl Sandbox for State {
 				Column::new()
 					.spacing(n::button::SPACING)
 					.width(Length::Fill)
-					.align_items(Align::Center)
+					.align_items(Alignment::Center)
 					.push(
 						Container::new(
 							Text::new(self.ls4.get_char_upper())
@@ -357,14 +373,16 @@ impl Sandbox for State {
 						)
 						.style(design::container_color::dynamic(&self.ls4))
 						.height(Length::Fill).width(Length::Fill)
-						.align_x(Align::Center).align_y(Align::Center)
+						.align_x(alignment::Horizontal::Center)
+                        .align_y(alignment::Vertical::Center)
 					)
 					.push(
 						Button::new(
 							&mut self.ls4.gray_button,
 							Text::new("gray")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS4(LMessage::GrayPressed))
 						.style(design::ButtonGray)
@@ -374,8 +392,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls4.yellow_button,
 							Text::new("yellow")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS4(LMessage::YellowPressed))
 						.style(design::ButtonYellow)
@@ -385,8 +404,9 @@ impl Sandbox for State {
 						Button::new(
 							&mut self.ls4.green_button,
 							Text::new("green")
-							.horizontal_alignment(HorizontalAlignment::Center)
-							.vertical_alignment(VerticalAlignment::Center).size(n::button::SIZE2)
+							.horizontal_alignment(alignment::Horizontal::Center)
+							.vertical_alignment(alignment::Vertical::Center)
+                            .size(n::button::SIZE2)
 						)
 						.on_press(Message::LS4(LMessage::GreenPressed))
 						.style(design::ButtonGreen)
@@ -398,7 +418,7 @@ impl Sandbox for State {
 
 		Row::new() // split screen left & right
 			.padding(20)
-			.align_items(Align::Start)
+			.align_items(Alignment::Start)
 			// left side of screen: text input and stuff
 			.push(
 				Column::new()

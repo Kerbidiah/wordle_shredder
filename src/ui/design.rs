@@ -26,15 +26,15 @@ const GRAY: Color = Color::from_rgb(
 );
 
 const BLANK: Color = Color::from_rgb(
-	0xE7 as f32 / 255.0, 
+	0xE7 as f32 / 255.0,
 	0xE8 as f32 / 255.0,
-	0xED as f32 / 255.0
+	0xED as f32 / 255.0,
 );
 
 pub mod container_color {
-    use super::*;
-    use crate::ui::LetterState;
+	use super::*;
 	use crate::list::Letter;
+	use crate::ui::LetterState;
 
 	pub fn dynamic(l_state: &LetterState) -> Box<dyn container::StyleSheet> {
 		match l_state.letter {
@@ -98,16 +98,20 @@ impl container::StyleSheet for GrayContainer {
 	}
 }
 
+fn button_of_color(color: Color) -> button::Style {
+	button::Style {
+		border_radius: BORDER_RADIUS,
+		text_color: TEXT_COLOR,
+		background: color.into(),
+		..button::Style::default()
+	}
+}
+
 pub struct ButtonGreen;
 
 impl button::StyleSheet for ButtonGreen {
 	fn active(&self) -> button::Style {
-		button::Style {
-			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR,
-			background: GREEN.into(),
-			..button::Style::default()
-		}
+		button_of_color(GREEN)
 	}
 
 	fn hovered(&self) -> button::Style {
@@ -118,9 +122,7 @@ impl button::StyleSheet for ButtonGreen {
 	}
 
 	fn pressed(&self) -> button::Style {
-		button::Style {
-			..self.hovered()
-		}
+		button::Style { ..self.hovered() }
 	}
 }
 
@@ -128,12 +130,7 @@ pub struct ButtonYellow;
 
 impl button::StyleSheet for ButtonYellow {
 	fn active(&self) -> button::Style {
-		button::Style {
-			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR,
-			background: YELLOW.into(),
-			..button::Style::default()
-		}
+		button_of_color(YELLOW)
 	}
 
 	fn hovered(&self) -> button::Style {
@@ -144,9 +141,7 @@ impl button::StyleSheet for ButtonYellow {
 	}
 
 	fn pressed(&self) -> button::Style {
-		button::Style {
-			..self.hovered()
-		}
+		button::Style { ..self.hovered() }
 	}
 }
 
@@ -154,12 +149,7 @@ pub struct ButtonGray;
 
 impl button::StyleSheet for ButtonGray {
 	fn active(&self) -> button::Style {
-		button::Style {
-			border_radius: BORDER_RADIUS,
-			text_color: TEXT_COLOR,
-			background: GRAY.into(),
-			..button::Style::default()
-		}
+		button_of_color(GRAY)
 	}
 
 	fn hovered(&self) -> button::Style {
@@ -170,8 +160,6 @@ impl button::StyleSheet for ButtonGray {
 	}
 
 	fn pressed(&self) -> button::Style {
-		button::Style {
-			..self.hovered()
-		}
+		button::Style { ..self.hovered() }
 	}
 }

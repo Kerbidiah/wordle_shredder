@@ -1,9 +1,5 @@
-
-use iced::{
-	button,
-};
-
 use crate::list::Letter;
+use iced::button;
 
 #[derive(Debug, Clone, Copy)]
 pub struct LetterState {
@@ -35,13 +31,13 @@ impl LetterState {
 		match color {
 			LMessage::GrayPressed => {
 				self.letter = Letter::Gray(self.get_char());
-			},
+			}
 			LMessage::YellowPressed => {
 				self.letter = Letter::Yellow(self.get_char(), i);
-			},
+			}
 			LMessage::GreenPressed => {
 				self.letter = Letter::Green(self.get_char(), i);
-			},
+			}
 		}
 	}
 
@@ -73,7 +69,7 @@ impl LetterState {
 #[allow(clippy::enum_variant_names)]
 #[derive(Debug, Clone, Copy)]
 pub enum LMessage {
-    GrayPressed,
-    YellowPressed,
+	GrayPressed,
+	YellowPressed,
 	GreenPressed,
 }
